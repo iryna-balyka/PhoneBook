@@ -1,4 +1,5 @@
 public class StringFormatting {
+
     public String formatName(String name) {
         String formatted = name.toLowerCase();
         String formattedName = "";
@@ -12,10 +13,18 @@ public class StringFormatting {
     }
     public String formatPhoneNumber(String number) {
         String clean = number.replaceAll("[^0-9]", "");
-        String result = "+7" + " " + clean.substring(1, 4) + " " +
-                clean.substring(4, 7) + " " + clean.substring(7, 9) + " " + clean.substring(9);
+        return ("+7" + " " + clean.substring(1, 4) + " " +
+                clean.substring(4, 7) + " " + clean.substring(7, 9) + " " + clean.substring(9));
+    }
 
-        return result;
+    public Sign parseInput(String input) {
+        if (checkPhoneNumber(input)) {
+            return Sign.NUMBER;
+        }
+        if (checkName(input)){
+            return Sign.NAME;
+        }
+        return Sign.NONE;
     }
 
     public boolean checkPhoneNumber(String phoneNumber) {
@@ -27,4 +36,6 @@ public class StringFormatting {
         String[] words = name.trim().split(" ");
         return (words.length == 3);
     }
+
+
 }
